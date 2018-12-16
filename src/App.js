@@ -8,6 +8,18 @@ import Header from './components/header';
 import Menu from './components/menu';
 import Main from './components/main'
 
+import GetData from './services/getData';
+import PostData from './services/postData';
+const request = new GetData,
+      post = new PostData,
+      data = {username: 'HeLLO'};
+request.getAllPosts()
+    .then (data => console.log(data));
+post.postData('/posts', data)
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.log(error));
+
+
 const url = process.env.PUBLIC_URL + '/img/bg.png';
 
 const HeaderWrapper = styled.header`
